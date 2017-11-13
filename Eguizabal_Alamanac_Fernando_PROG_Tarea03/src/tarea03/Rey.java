@@ -18,11 +18,21 @@ public class Rey {
     public Rey (String color){
         //según sea el color psado por parametros creamos la posicion
         if(color.equalsIgnoreCase("BLANCO")){
+            this.color = Color.BLANCO;
             this.posicion.setFila(1);
             this.posicion.setColumna('e');
         }else{
+            this.color = Color.NEGRO;
             this.posicion.setFila(8);
             this.posicion.setColumna('e');
         }
+    }
+    //Creamos los metodos GET que nos devolveran los atributos del objeto
+    //Devolviendo los mismos en el mismo tipo que son
+    public Color getColor (){
+        return this.color;
+    }
+    public Posicion getPosicion(){
+        return this.posicion;
     }
 }
