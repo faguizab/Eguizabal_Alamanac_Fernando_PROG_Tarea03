@@ -56,4 +56,8 @@ public class Posicion {
             this.columna = columna;
         }
     }
+    public String toString(){
+        String posicion = Integer.toString(this.fila)+this.columna;
+        return posicion;
+    }
 }
