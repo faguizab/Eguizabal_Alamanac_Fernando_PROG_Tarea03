@@ -32,4 +32,28 @@ public class Posicion {
             this.columna = columna;
         }
     }
+     //Creamos los metodos GET para los dos atributos
+    public int getFila(){
+        return this.fila;
+    }
+    public char getColumna(){
+        return this.columna;
+    }
+    //Creamos el metodo SET para los dos atributos comparando siempre
+    //que los parametros sean correctos
+    public void setFila(int fila){
+        if(fila>=1 && fila <=8){
+            this.fila = fila;
+        }else{
+            this.fila = 1;
+        }
+    }
+    public void setColumna(char columna){
+        String cadena = "abcdefgh";
+        if(cadena.indexOf(columna) == -1){
+            this.columna = 'a';
+        }else{
+            this.columna = columna;
+        }
+    }
 }
