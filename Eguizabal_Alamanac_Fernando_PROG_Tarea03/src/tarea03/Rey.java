@@ -12,12 +12,12 @@ package tarea03;
 public class Rey {
     //Creamos los atributos del rey con el tipo de los enum y clases que hemos creado
     public Color color;
-    public Posicion posicion;
+    public Posicion posicion = new Posicion (1,'a');
     
     //creamos el constructor en funcion del color que nos pasan
-    public Rey (String color){
+    public Rey (int color){
         //según sea el color psado por parametros creamos la posicion
-        if(color.equalsIgnoreCase("BLANCO")){
+        if(color == 1){
             this.color = Color.BLANCO;
             this.posicion.setFila(1);
             this.posicion.setColumna('e');
@@ -56,14 +56,16 @@ public class Rey {
                             System.out.println("El movimiento hacia el NORTE no está permitido");
                         }else{
                             //Se mueve una casilla hacia el norte
-                            this.posicion.setFila(fila+1);
+                            this.posicion.setFila(fila-1);
+                            System.out.println("Movemos al rey en la dirección NORTE");
                         }
                         break;
             case SUR:   if (fila==8){
                             //No podría mover en direccion SUR
                             System.out.println("El movimiento hacia el SUR no está permitido");
                         }else{
-                            this.posicion.setFila(fila-1);
+                            this.posicion.setFila(fila+1);
+                            System.out.println("Movemos al rey en la dirección SUR");
                         }
                         break;
             case ESTE: if (columna == 'h'){
@@ -72,6 +74,7 @@ public class Rey {
                         }else{
                             columna_final = cadena.charAt((cadena.lastIndexOf(columna)+1));
                             this.posicion.setColumna(columna_final);
+                            System.out.println("Movemos al rey en la dirección ESTE");
                         }
                         break;
             case OESTE: if (columna == 'a'){
@@ -80,6 +83,7 @@ public class Rey {
                         }else{
                             columna_final = cadena.charAt((cadena.lastIndexOf(columna)-1));
                             this.posicion.setColumna(columna_final);
+                            System.out.println("Movemos al rey en la dirección OESTE");
                         }
                         break;
             case NORESTE:   if (fila == 1 || columna == 'h'){
@@ -89,6 +93,7 @@ public class Rey {
                                 columna_final = cadena.charAt((cadena.lastIndexOf(columna)+1));
                                 this.posicion.setColumna(columna_final);
                                 this.posicion.setFila(fila-1);
+                                System.out.println("Movemos al rey en la dirección NORESTE");
                             }
                         break;
             case SURESTE:   if (fila == 8 || columna == 'h'){
@@ -98,6 +103,7 @@ public class Rey {
                                 columna_final = cadena.charAt((cadena.lastIndexOf(columna)+1));
                                 this.posicion.setColumna(columna_final);
                                 this.posicion.setFila(fila+1);
+                                System.out.println("Movemos al rey en la dirección SURESTE");
                             }
                         break;
             case NOROESTE:   if (fila == 1 || columna == 'a'){
@@ -107,18 +113,21 @@ public class Rey {
                                 columna_final = cadena.charAt((cadena.lastIndexOf(columna)-1));
                                 this.posicion.setColumna(columna_final);
                                 this.posicion.setFila(fila-1);
+                                System.out.println("Movemos al rey en la dirección NOROESTE");
                             }
                         break;
-            case SUROESTE:   if (fila == 1 || columna == 'h'){
+            case SUROESTE:   if (fila == 8 || columna == 'a'){
                                 //No podría mover al SUROESTE
                                 System.out.println("El movimiento hacia el SUROESTE no está permitido");
                             }else{
                                 columna_final = cadena.charAt((cadena.lastIndexOf(columna)-1));
                                 this.posicion.setColumna(columna_final);
-                                this.posicion.setFila(fila-1);
+                                this.posicion.setFila(fila+1);
+                                System.out.println("Movemos al rey en la dirección SUROESTE");
                             }
                         break;
             default: break;
        }
+        System.out.println("La posición actual del Rey "+this.color+" es: "+this.posicion.getFila()+this.posicion.getColumna());
     }
 }
