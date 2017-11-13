@@ -35,4 +35,9 @@ public class Rey {
     public Posicion getPosicion(){
         return this.posicion;
     }
+    //creo el metodo toString para devolver todos los atributos del rey
+    public String toString(){
+        String rey = this.color+Integer.toString(this.posicion.getFila())+this.posicion.getColumna();
+        return rey;
+    }
 }
