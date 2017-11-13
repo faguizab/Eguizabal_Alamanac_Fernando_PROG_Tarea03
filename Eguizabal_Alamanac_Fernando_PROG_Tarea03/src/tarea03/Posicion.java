@@ -56,6 +56,7 @@ public class Posicion {
             this.columna = columna;
         }
     }
+    //metodo que nos devolvera mediante un string la fila y columna 
     public String toString(){
         String posicion = Integer.toString(this.fila)+this.columna;
         return posicion;
