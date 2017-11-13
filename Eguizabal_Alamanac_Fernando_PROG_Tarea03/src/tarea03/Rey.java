@@ -40,4 +40,85 @@ public class Rey {
         String rey = this.color+Integer.toString(this.posicion.getFila())+this.posicion.getColumna();
         return rey;
     }
+
+    //Creamos le metodo mueve para recolocar la posicion del rey
+    public void mueve (Direccion direccion){
+        //creamos las variables necesarias para las comprobaciones
+        int fila = this.posicion.getFila();
+        char columna = this.posicion.getColumna();
+        //Creamos una cadena con todas las columnas y una variable para saber a que columan va
+        String cadena = "abcdefgh";
+        char columna_final = 'a';
+        
+        switch(direccion){
+            case NORTE: if (fila == 1){
+                            //No podria mover en direccion NORTE
+                            System.out.println("El movimiento hacia el NORTE no está permitido");
+                        }else{
+                            //Se mueve una casilla hacia el norte
+                            this.posicion.setFila(fila+1);
+                        }
+                        break;
+            case SUR:   if (fila==8){
+                            //No podría mover en direccion SUR
+                            System.out.println("El movimiento hacia el SUR no está permitido");
+                        }else{
+                            this.posicion.setFila(fila-1);
+                        }
+                        break;
+            case ESTE: if (columna == 'h'){
+                            //No podría mover al ESTE
+                            System.out.println("El movimiento hacia el ESTE no está permitido");
+                        }else{
+                            columna_final = cadena.charAt((cadena.lastIndexOf(columna)+1));
+                            this.posicion.setColumna(columna_final);
+                        }
+                        break;
+            case OESTE: if (columna == 'a'){
+                            //No podría mover al OESTE
+                            System.out.println("El movimiento hacia el OESTE no está permitido");
+                        }else{
+                            columna_final = cadena.charAt((cadena.lastIndexOf(columna)-1));
+                            this.posicion.setColumna(columna_final);
+                        }
+                        break;
+            case NORESTE:   if (fila == 1 || columna == 'h'){
+                                //No podría mover al NOROESTE
+                                System.out.println("El movimiento hacia el NORESTE no está permitido");
+                            }else{
+                                columna_final = cadena.charAt((cadena.lastIndexOf(columna)+1));
+                                this.posicion.setColumna(columna_final);
+                                this.posicion.setFila(fila-1);
+                            }
+                        break;
+            case SURESTE:   if (fila == 8 || columna == 'h'){
+                                //No podría mover al SURESTE
+                                System.out.println("El movimiento hacia el SURESTE no está permitido");
+                            }else{
+                                columna_final = cadena.charAt((cadena.lastIndexOf(columna)+1));
+                                this.posicion.setColumna(columna_final);
+                                this.posicion.setFila(fila+1);
+                            }
+                        break;
+            case NOROESTE:   if (fila == 1 || columna == 'a'){
+                                //No podría mover al NOROESTE
+                                System.out.println("El movimiento hacia el NOROESTE no está permitido");
+                            }else{
+                                columna_final = cadena.charAt((cadena.lastIndexOf(columna)-1));
+                                this.posicion.setColumna(columna_final);
+                                this.posicion.setFila(fila-1);
+                            }
+                        break;
+            case SUROESTE:   if (fila == 1 || columna == 'h'){
+                                //No podría mover al SUROESTE
+                                System.out.println("El movimiento hacia el SUROESTE no está permitido");
+                            }else{
+                                columna_final = cadena.charAt((cadena.lastIndexOf(columna)-1));
+                                this.posicion.setColumna(columna_final);
+                                this.posicion.setFila(fila-1);
+                            }
+                        break;
+            default: break;
+       }
+    }
 }
